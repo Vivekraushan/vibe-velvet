@@ -30,121 +30,98 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="sticky top-0 z-50 vv-card border-b border-border/50 backdrop-blur-md bg-card/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 vv-transition hover:scale-105">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">VV</span>
-            </div>
-            <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              VelvetVibe
-            </span>
-          </Link>
-
-          {/* Search Bar - Desktop */}
-          <div className="hidden md:flex flex-1 max-w-md mx-8">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                placeholder="Search VelvetVibe..."
-                className="pl-10 bg-muted border-border/50 focus:border-primary/50 vv-transition"
-              />
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
-              <Link key={item.path} to={item.path}>
-                <Button
-                  variant={isActive(item.path) ? "default" : "ghost"}
-                  size="sm"
-                  className={`vv-transition ${
-                    isActive(item.path) 
-                      ? "vv-button-primary vv-shadow-red" 
-                      : "vv-button-ghost"
-                  }`}
-                >
-                  <item.icon className="w-4 h-4 mr-2" />
-                  {item.label}
-                </Button>
-              </Link>
-            ))}
-          </div>
-
-          {/* Action Buttons - Desktop */}
-          <div className="hidden md:flex items-center space-x-2 ml-4">
-            <Button variant="ghost" size="sm" className="vv-button-ghost">
-              <Bell className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="sm" className="vv-button-ghost">
-              <MessageCircle className="w-4 h-4" />
-            </Button>
-            <Link to="/login">
-              <Button variant="default" size="sm" className="vv-button-primary">
-                Login
-              </Button>
+    <>
+      {/* Top Navigation Bar */}
+      <nav className="sticky top-0 z-50 vv-card border-b border-border/50 backdrop-blur-md bg-card/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-2 vv-transition hover:scale-105">
+              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">VV</span>
+              </div>
+              <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+                VelvetVibe
+              </span>
             </Link>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden vv-button-ghost"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </Button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50">
-            {/* Mobile Search */}
-            <div className="mb-4">
-              <div className="relative">
+            {/* Search Bar - Desktop */}
+            <div className="hidden md:flex flex-1 max-w-md mx-8">
+              <div className="relative w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="Search VelvetVibe..."
-                  className="pl-10 bg-muted border-border/50 focus:border-primary/50"
+                  className="pl-10 bg-muted border-border/50 focus:border-primary/50 vv-transition"
                 />
               </div>
             </div>
 
-            {/* Mobile Navigation */}
-            <div className="space-y-2">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
+                <Link key={item.path} to={item.path}>
                   <Button
                     variant={isActive(item.path) ? "default" : "ghost"}
-                    className={`w-full justify-start vv-transition ${
+                    size="sm"
+                    className={`vv-transition ${
                       isActive(item.path) 
-                        ? "vv-button-primary" 
+                        ? "vv-button-primary vv-shadow-red" 
                         : "vv-button-ghost"
                     }`}
                   >
-                    <item.icon className="w-4 h-4 mr-3" />
+                    <item.icon className="w-4 h-4 mr-2" />
                     {item.label}
                   </Button>
                 </Link>
               ))}
-              
-              <div className="flex space-x-2 pt-2">
-                <Button variant="ghost" className="flex-1 vv-button-ghost">
-                  <Bell className="w-4 h-4 mr-2" />
-                  Notifications
+            </div>
+
+            {/* Action Buttons - Desktop */}
+            <div className="hidden md:flex items-center space-x-2 ml-4">
+              <Button variant="ghost" size="sm" className="vv-button-ghost">
+                <Bell className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" size="sm" className="vv-button-ghost">
+                <MessageCircle className="w-4 h-4" />
+              </Button>
+              <Link to="/login">
+                <Button variant="default" size="sm" className="vv-button-primary">
+                  Login
                 </Button>
-                <Button variant="ghost" className="flex-1 vv-button-ghost">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Messages
-                </Button>
+              </Link>
+            </div>
+
+            {/* Mobile Actions */}
+            <div className="md:hidden flex items-center space-x-2">
+              <Button variant="ghost" size="sm" className="vv-button-ghost">
+                <Bell className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" size="sm" className="vv-button-ghost">
+                <MessageCircle className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="vv-button-ghost"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden py-4 border-t border-border/50">
+              {/* Mobile Search */}
+              <div className="mb-4">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                  <Input
+                    placeholder="Search VelvetVibe..."
+                    className="pl-10 bg-muted border-border/50 focus:border-primary/50"
+                  />
+                </div>
               </div>
               
               <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
@@ -153,10 +130,34 @@ const Navbar = () => {
                 </Button>
               </Link>
             </div>
-          </div>
-        )}
+          )}
+        </div>
+      </nav>
+
+      {/* Mobile Bottom Navigation - Facebook Style */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 vv-card border-t border-border/50 backdrop-blur-md bg-card/95">
+        <div className="flex items-center justify-around py-2">
+          {navItems.slice(0, 4).map((item) => (
+            <Link key={item.path} to={item.path} className="flex-1">
+              <Button
+                variant="ghost"
+                size="sm"
+                className={`w-full flex flex-col items-center justify-center h-12 vv-transition ${
+                  isActive(item.path) 
+                    ? "text-primary" 
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <item.icon className={`w-5 h-5 ${isActive(item.path) ? 'text-primary' : ''}`} />
+                <span className={`text-xs mt-1 ${isActive(item.path) ? 'text-primary font-medium' : ''}`}>
+                  {item.label}
+                </span>
+              </Button>
+            </Link>
+          ))}
+        </div>
       </div>
-    </nav>
+    </>
   );
 };
 
