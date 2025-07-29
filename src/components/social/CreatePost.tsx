@@ -34,30 +34,30 @@ const CreatePost = () => {
             className="min-h-[100px] bg-muted border-border/50 focus:border-primary/50 resize-none text-foreground placeholder:text-muted-foreground"
           />
           
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="vv-button-ghost">
-                <Image className="w-4 h-4 mr-2" />
-                Photo
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="flex items-center gap-2 overflow-x-auto">
+              <Button variant="ghost" size="sm" className="vv-button-ghost flex-shrink-0">
+                <Image className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Photo</span>
               </Button>
-              <Button variant="ghost" size="sm" className="vv-button-ghost">
-                <Video className="w-4 h-4 mr-2" />
-                Video
+              <Button variant="ghost" size="sm" className="vv-button-ghost flex-shrink-0">
+                <Video className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Video</span>
               </Button>
-              <Button variant="ghost" size="sm" className="vv-button-ghost">
-                <Smile className="w-4 h-4 mr-2" />
-                Feeling
+              <Button variant="ghost" size="sm" className="vv-button-ghost flex-shrink-0">
+                <Smile className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Feeling</span>
               </Button>
-              <Button variant="ghost" size="sm" className="vv-button-ghost">
-                <MapPin className="w-4 h-4 mr-2" />
-                Location
+              <Button variant="ghost" size="sm" className="vv-button-ghost flex-shrink-0">
+                <MapPin className="w-4 h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Location</span>
               </Button>
             </div>
             
             <Button 
               onClick={handlePost}
               disabled={!content.trim()}
-              className="vv-button-primary"
+              className="vv-button-primary w-full sm:w-auto"
             >
               Post
             </Button>
